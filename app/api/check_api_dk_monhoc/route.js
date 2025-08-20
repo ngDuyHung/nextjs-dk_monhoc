@@ -1,7 +1,8 @@
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
   const key = searchParams.get("key");
-  const validKey = "STU2025-REGISTER-VALID";
+  const validKey = process.env.VALID_KEY;
+
 
   const isValid = key === validKey;
 
