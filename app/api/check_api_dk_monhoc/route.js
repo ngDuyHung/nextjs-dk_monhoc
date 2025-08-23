@@ -11,3 +11,16 @@ export async function GET(request) {
     headers: { "Content-Type": "application/json" },
   });
 }
+
+export async function POST(request) {
+  const body = await request.json();
+  const key = body.key;
+  const validKey = process.env.VALID_KEY;
+
+  const isValid = key === validKey;
+
+  return new Response(JSON.stringify({ valid: isValid }), {
+    status: 200,
+    headers: { "Content-Type": "application/json" },
+  });
+}
